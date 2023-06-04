@@ -1,0 +1,13 @@
+Value VLAN_NAME (\S+)
+Value IP_ADDRESS (\d+.\d+.\d+.\d+)
+Value SUBNET (\d+.\d+.\d+.\d+)
+Value STATUS (\S*)
+
+
+
+
+
+#Separate VIP
+
+Start
+  ^[N|n]ame:\s*${VLAN_NAME}\s+.*[I|i][P|p]:\s*${IP_ADDRESS}\s+${SUBNET}.*[S|s]tatus:\s+${STATUS} -> Record

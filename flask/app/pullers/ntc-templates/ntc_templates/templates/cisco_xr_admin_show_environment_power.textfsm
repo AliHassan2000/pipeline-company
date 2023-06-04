@@ -1,0 +1,7 @@
+Value power_capacity_one ([0-9A-Z.]*)
+Value power_capacity_two ([0-9A-Z]*)
+Value power_capacity_three ([0-9A-Z]*)
+
+Start
+  ^Total Power Capacity:?\s+${power_capacity_one}$$
+  ^\s+Total output power capacity\D+1\D+${power_capacity_two}\D+${power_capacity_three}$$

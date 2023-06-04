@@ -1,0 +1,30 @@
+Value Required NEIGHBOR (\S+)
+Value Required LOCAL_INTERFACE (\S+)
+Value PORT_ID (\S+)
+Value PARENT_INTERFACE (\S+)
+Value CHASSIS_ID (\w+?\.\w+?\.\w+?)
+Value MGMT_ADDRESS (\d+?\.\d+?\.\d+?\.\d+?|\w+?\.\w+?\.\w+?)
+Value PORT_DESCRIPTION (.*)
+Value SYSTEM_DESCRIPTION ((.+?\n)*)
+Value CAPABILITIES (.*)
+Value VLAN (.*)
+Value PEER_MAC_ADDRESS (.*)
+
+
+Start
+  ^[Ll]ocal\s[Ii]nterface\s*:\s*$LOCAL_INTERFACE$$
+  ^[Pp]arent\s[Ii]nterface\s*:\s*$PARENT_INTERFACE$$
+  ^[Cc]hassis\s[idID]{2}\:\s${CHASSIS_ID}$$
+  ^[Pp]ort\s[idID]{2}\:\s${PORT_ID}$$
+  ^[Pp]ort\s[Dd]escription\:\s${PORT_DESCRIPTION}$$
+  ^[Ss]ystem\s+[Dd]escription:\s+{}
+  ^[Ss]ystem\s[Nn]ame\:\s${NEIGHBOR}$$
+  ^\s+[Ii][Pp]v4\s[Aa]ddress:\s*${MGMT_ADDRESS}$$
+  ^[Pp]eer\s[Mm][Aa][Cc]\s[Aa]ddress:${PEER_MAC_ADDRESS}$$
+  ^------------------------------------------------ -> Record
+
+
+
+  
+  
+  

@@ -1,0 +1,15 @@
+Value Filldown node_name (node\d+)
+Value name ([a-zA-Z0-9 ]*)
+Value version ((Rev|REV)\s+\d+)
+Value pid ([0-9-A-Z]*)
+Value serial ([0-9A-Z]*)
+Value desc ([0-9A-Z .a-z-+]*)
+Value ch_name (Chassis)
+Value ch_serial ([a-zA-Z0-9]*)
+Value ch_desc ([a-zA-Z0-9]*)
+
+Start
+  ^${node_name}
+  ^${name}${version}\b\s+${pid}\b\s+${serial}\b\s+${desc}|${ch_name}\s+${ch_serial}\s+${ch_desc} -> Record
+  
+  

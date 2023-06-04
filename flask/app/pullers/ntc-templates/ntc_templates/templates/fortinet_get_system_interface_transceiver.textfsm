@@ -1,0 +1,11 @@
+Value port_name (Interface port\d+)
+Value port_type (.*)
+Value vendor ([a-zA-Z ]*)
+Value part_number ([a-zA-Z0-9- ]*)
+Value serial_number ([a-zA-Z0-9- ]*)
+
+Start
+  ^${port_name}\s+-\s+${port_type}
+  ^\s+Vendor\s+Name\s+:\s+${vendor}
+  ^\s+Part\s+No.\s+:\s+${part_number}
+  ^\s+Serial\s+No.\s+:\s+${serial_number} -> Record

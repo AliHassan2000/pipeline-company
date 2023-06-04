@@ -1,0 +1,8 @@
+Value version (.*)
+Value build (\d+)
+Value serial (.*)
+
+Start
+  ^\s+.*version\s+${version},\s+build\s+${build}\s+\( 
+  ^\s+Serial Number:\s+${serial} 
+    

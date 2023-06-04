@@ -1,0 +1,8 @@
+Value physical_memory ([0-9 A-Z.]*)
+Value free_memory ([0-9 A-Z.]*)
+Value memory_state ([a-zA-Z]*)
+
+Start
+  ^\s+Physical Memory\W+\s+${physical_memory}
+  ^\s+Free Memory\W+\s+${free_memory}
+  ^\s+Memory State\W+\s+${memory_state}

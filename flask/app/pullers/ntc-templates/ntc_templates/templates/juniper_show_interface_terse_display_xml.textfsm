@@ -1,0 +1,15 @@
+Value INTERFACE_NAME (\S+)
+Value ADMIN_STATUS (\S+)
+Value PROTOCOL (\S+)
+Value DESCRIPTION (.*)
+Value IP_ADDRESS (\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3})
+Value SUBNET (\/\d+)
+
+#Separate VIP
+
+Start
+  ^\s*<name>${INTERFACE_NAME}<
+  ^\s*<admin-status>${ADMIN_STATUS}<
+  ^\s*<oper-status>${PROTOCOL}<
+  ^\s*<description>${DESCRIPTION}<
+  ^\s*<ifa-local\s*\D*${IP_ADDRESS}\s*${SUBNET} -> Record

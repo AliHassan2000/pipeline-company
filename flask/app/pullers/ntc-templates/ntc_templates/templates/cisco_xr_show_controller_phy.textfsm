@@ -1,0 +1,4 @@
+Value connector_type (.*)
+
+Start 
+  ^\s+Connector\s+Type:?\s+${connector_type}

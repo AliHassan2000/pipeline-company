@@ -1,0 +1,12 @@
+Value IP_ADDRESS (\d+.\d+.\d+.\d+)
+Value VLAN_NAME (.*)
+Value INTERFACE_DESCRIPTION (.*)
+Value VLAN_ID (\d*)
+Value ADMIN_STATUS (\w+)
+
+Start
+  ^[N|n]et\s*::\s*[S|s]elf\s+[I|i][P|p]\s*:\s+${IP_ADDRESS}
+  ^\s+\|\s*[N|n]et\s*::\s*[V|v]lan:\s+${VLAN_NAME}
+  ^\s+\|\s*[I|i]nterface\s+[N|n]ame\s*${INTERFACE_DESCRIPTION}
+  ^\s+\|\s*[T|t]ag\s+${VLAN_ID}
+  ^\s+\|\s*\S+_Trunk\s+${ADMIN_STATUS}\s+ -> Record

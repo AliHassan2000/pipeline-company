@@ -1,0 +1,7 @@
+Value VSERVER (.*)
+Value VIP (\d+.\d+.\d+.\d+(%*\d*):\S+)
+#Separate VIP
+
+Start
+  ^\s*[l|L]tm\s+[v|V]irtual\s+${VSERVER}\s+
+  ^\s+[D|d]estination\s+${VIP} -> Record

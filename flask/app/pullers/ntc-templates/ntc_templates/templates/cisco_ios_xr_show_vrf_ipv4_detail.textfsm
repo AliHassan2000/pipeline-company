@@ -1,0 +1,20 @@
+Value NAME (.*)
+Value DEFAULT_RD (.*)
+Value List INTERFACES (.*)
+
+Start 
+  ^VRF\s+${NAME};\s+RD\s+${DEFAULT_RD};
+  ^Interfaces: -> Start_Interfaces 
+  #^Address -> Record
+  ^.*VPN route -> Record
+
+Start_Interfaces
+  ^\s+${INTERFACES}
+  ^Address -> Start
+
+#  ^\s{2}\S+ -> Continue.Record
+#  ^\s{60}\s+${INTERFACES}
+##  ^\s+${NAME}\s+${DEFAULT_RD}\s+${PROTOCOLS}\s+${INTERFACES}
+#  ^\s+${NAME}\s+${DEFAULT_RD}\s+${PROTOCOLS}
+
+

@@ -1,0 +1,11 @@
+Value serial (.*)
+Value version (.*)
+Value descr (.*)
+Value build (\S+)
+Value pid (.*)
+
+Start
+  ^\s+Serial\s+Number:\s+${serial}
+  ^\s+System\s+name:\s+${descr}
+  ^\s+Version:\s+${version}\(build\s+${build}\)
+  ^\s+System\s+Model\s+Number:\s+${pid}

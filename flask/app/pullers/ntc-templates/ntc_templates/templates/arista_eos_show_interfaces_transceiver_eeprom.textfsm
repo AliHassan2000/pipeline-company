@@ -1,0 +1,8 @@
+Value port_type (.*)
+Value connector (\w+)
+Value wavelength (.*)
+
+Start
+  ^${port_type}\d+\/\d+\s+EEPROM 
+  ^\s+Connector\s+.*:\s+${connector}
+  ^\s+Wavelength\s+.*:\s+${wavelength}

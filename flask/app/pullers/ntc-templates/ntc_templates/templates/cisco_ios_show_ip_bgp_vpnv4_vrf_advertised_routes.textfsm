@@ -1,0 +1,4 @@
+Value ROUTE (i*\d+.\d+.\d+.\d+\/*\d*)
+
+Start
+  ^\s*\**\>*i*\s*${ROUTE} -> Record

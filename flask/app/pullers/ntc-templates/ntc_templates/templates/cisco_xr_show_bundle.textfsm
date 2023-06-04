@@ -1,0 +1,18 @@
+Value Bundle_Name (Bundle-.*)
+Value List PHYS_IFACE ([A-Za-z]*\d*\/\d+\/\d+\/\d+)
+Value BUNDLE_STATUS (.*)
+
+Start
+  ^---- -> Continue.Record
+  ^${Bundle_Name}
+  ^\s*${PHYS_IFACE}
+  ^\s+[S|s]tatus:\s+${BUNDLE_STATUS}
+
+
+
+
+#Start
+#  ^${Bundle_Name}
+#  ^\s*${PHYS_IFACE}
+#  ^\s+[S|s]tatus:\s+${BUNDLE_STATUS}
+  #^----- 

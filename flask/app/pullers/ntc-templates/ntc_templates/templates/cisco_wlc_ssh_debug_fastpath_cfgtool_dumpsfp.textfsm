@@ -1,0 +1,9 @@
+Value port (\d+)
+Value vendor (\w+(\s+|\W+)\w+)
+Value transceiver_type ((\S+\s\S+)|(\S+))
+Value pid ([A-Za-z0-9-|_]*)
+Value rev ([A-Za-z0-9]*)
+Value sn ([A-Za-z0-9-]*)
+
+Start
+  ^\s+${port}\s+${vendor}\s+${transceiver_type}\s+${pid}\s+${rev}\s+${sn} -> Record

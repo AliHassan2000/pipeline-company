@@ -1,0 +1,6 @@
+Value featureid (\S+)
+Value active (\d)
+
+Start
+  ^FeatureID:\s+${featureid} 
+  ^\s+Active\s+${active} -> Record

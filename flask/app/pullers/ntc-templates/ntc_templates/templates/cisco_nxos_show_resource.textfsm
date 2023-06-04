@@ -1,0 +1,9 @@
+Value resourse ([a-z0-9-_]*)
+Value min (\d+)
+Value max (\d+)
+Value used (\d+)
+Value unsed (\d+)
+Value avail (\d+)
+
+Start
+  ^\s+${resourse}\s+${min}\s+${max}\s+${used}\s+${unsed}\s+${avail} -> Record

@@ -1,0 +1,6 @@
+Value serial (.*)
+Value release (\S+)
+
+Start
+  ^Serial\s+number:\s+${serial}
+  ^Release\s+id:\s+${release}

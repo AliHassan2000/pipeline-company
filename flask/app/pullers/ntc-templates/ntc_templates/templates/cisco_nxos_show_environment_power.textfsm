@@ -1,0 +1,4 @@
+Value power_capacity_one ([0-9A-Z.]*)
+
+Start
+  ^Total Power Capacity:?\s+${power_capacity_one}

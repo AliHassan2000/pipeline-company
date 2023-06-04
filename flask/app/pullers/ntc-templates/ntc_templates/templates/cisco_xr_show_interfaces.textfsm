@@ -1,0 +1,31 @@
+Value Required INTERFACE (\S+)
+Value LINK_STATUS (.+?)
+Value ADMIN_STATE (.+?)
+Value HARDWARE_TYPE (\S+?(?:\s+Ethernet|))
+Value ADDRESS ((?:\w{4}\.){2}\w{4})
+Value BIA ((?:\w{4}\.){2}\w{4})
+Value DESCRIPTION (.*?)
+Value IP_ADDRESS (.*?)
+Value MTU (\d+)
+Value DUPLEX (.+?)
+Value SPEED (.+?b/s)
+Value BANDWIDTH (\d+\s+\w+)
+Value ENCAPSULATION (\w+)
+Value INPUT_RATE (\d+)
+Value OUTPUT_RATE (\d+)
+Value INPUT_ERRORS (\d+)
+Value OUTPUT_ERRORS (\d+)
+
+Start
+  ^\S+\s+is -> Continue.Record
+  ^${INTERFACE}\sis\s+${LINK_STATUS},\s+line\sprotocol\sis\s+${ADMIN_STATE}\s*$$
+  ^\s+Hardware\s+is\s+${HARDWARE_TYPE}(?:\s+interface\(s\)|)(?:,\s+address\s+is\s+${ADDRESS}(?:\s+\(bia\s+${BIA}\)\s*)*$$|\s.+|\s*$$)
+  ^\s+Description:\s+${DESCRIPTION}\s*$$
+  ^\s+[Ii]nternet\s+[Aa]ddress\s+is\s+${IP_ADDRESS}\s*$$
+  ^\s+MTU\s+${MTU}.*BW\s+${BANDWIDTH}
+  ^\s+Encapsulation\s+${ENCAPSULATION}
+  ^\s+(?:[Dd]uplex\s+|)${DUPLEX}(?:-[Dd]uplex|),\s+${SPEED}
+  ^\s+30\s+second\s+input\s+rate\s+${INPUT_RATE}
+  ^\s+30\s+second\s+output\s+rate\s+${OUTPUT_RATE}
+  ^\s+${INPUT_ERRORS}\s+input\s+errors
+  ^\s+${OUTPUT_ERRORS}\s+output\s+errors

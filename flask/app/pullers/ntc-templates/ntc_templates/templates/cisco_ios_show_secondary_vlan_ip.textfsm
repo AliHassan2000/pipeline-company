@@ -1,0 +1,14 @@
+Value VLAN_ID ([Vv]lan\d+)
+Value IP (\d+.\d+.\d+.\d)
+Value SECONDARY_IP (\d+.\d+.\d+.\d+)
+Value SECONDARY_SUBNET_MASK (\d+.\d+.\d+.\d+)
+
+
+Start
+  ^interface\s+${VLAN_ID} -> Info
+
+Info
+  ^\s+ip\s+address\s+${SECONDARY_IP}\s+${SECONDARY_SUBNET_MASK}\s+[Ss]econdary
+  ^\s+ip\s+address\s+${IP}\s+\d+.\d+.\d+.\d+$$ -> Record
+  ^! -> Start
+

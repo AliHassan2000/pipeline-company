@@ -1,0 +1,7 @@
+Value PROCESS_ID (.*)
+Value COST (\d+)
+Value ORIGINATED_FROM_IP (\d+.\d+.\d+.\d+)
+
+Start
+  ^\s+[K|k]nown\s+[V|v]ia\s+"${PROCESS_ID}".*metric\s+${COST}
+  ^\s+\d+.\d+.\d+.\d+,\s+from\s+${ORIGINATED_FROM_IP}

@@ -1,0 +1,8 @@
+Value Pool_NAME (.*)
+Value MONITOR_NAME (.*)
+
+#Separate VIP
+
+Start
+  ^\s*[l|L]tm\s+[p|P]ool\s+${Pool_NAME}\s+
+  ^\s+monitor\s+${MONITOR_NAME} -> Record 

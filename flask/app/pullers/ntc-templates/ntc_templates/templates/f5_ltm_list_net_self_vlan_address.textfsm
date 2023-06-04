@@ -1,0 +1,6 @@
+Value IP_ADDRESS (\d+.\d+.\d+.\d+)
+Value CIDR (.*)
+
+Start
+  ^net\s+self\s+(.*)\s+{
+  ^\s+address\s+${IP_ADDRESS}.*\/${CIDR} -> Record

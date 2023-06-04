@@ -1,0 +1,49 @@
+Value PRODUCT_NAME (.*)
+Value PRODUCT_MODEL (\S+)
+Value PRODUCT_EDITION (\S+)
+Value PRODUCT_RELEASE (.*)
+Value BUILD_ID (\S+)
+Value BUILD_DATE (.*)
+Value BUILD_ARCH (\S+)
+Value BUILT_BY (\S+)
+Value VERSION_SUMMARY (.*)
+Value RELEASE_LABELS (.*)
+Value APPLIANCE_ID (\S+)
+Value HOST_ID (\S+)
+Value SYSTEM_SERIAL_NUMBER (\S+)
+Value SYSTEM_UUID (\S+)
+Value ASSET_TYPE (.*)
+Value CUSTOMER_NAME (.*)
+Value CUSTOMER_ID (\d+)
+Value UPTIME (.*)
+Value CPU_LOAD_AVERAGES (.*)
+Value NO_OF_CPUS (\d+)
+Value SYSTEM_MEMORY (.*)
+Value SWAP (.*)
+
+
+Start
+  ^Product name:\s+${PRODUCT_NAME}
+  ^Product model:\s+${PRODUCT_MODEL}
+  ^Product edition:\s+${PRODUCT_EDITION}
+  ^Product release:\s+${PRODUCT_RELEASE}
+  ^Build ID:\s+${BUILD_ID} 
+  ^Build date:\s+${BUILD_DATE} 
+  ^Build arch:\s+${BUILD_ARCH}
+  ^Built by:\s+${BUILT_BY}
+  ^Version summary:\s+${VERSION_SUMMARY}
+  ^Release labels:\s+${RELEASE_LABELS} 
+  ^Appliance ID:\s+${APPLIANCE_ID} 
+  ^Host ID:\s+${HOST_ID}
+  ^System serial num:\s+${SYSTEM_SERIAL_NUMBER}
+  ^System UUID:\s+${SYSTEM_UUID}
+  ^Asset Type:\s+${ASSET_TYPE}
+  ^Customer Name:\s+${CUSTOMER_NAME}
+  ^Customer ID:\s+${CUSTOMER_ID}
+  ^Uptime:\s+${UPTIME}
+  ^CPU load averages:\s+${CPU_LOAD_AVERAGES}
+  ^Number of CPUs:\s+${NO_OF_CPUS}
+  ^System memory:\s+${SYSTEM_MEMORY}
+  ^Swap:\s+${SWAP} -> Record
+
+  

@@ -1,0 +1,8 @@
+Value status ([a-zA-Z ]*)
+Value feature ([a-zA-Z- ]*)
+Value descr ([a-zA-Z- 0-9]*)
+
+Start
+  ^\s+Status:?\s+${status}
+  ^\s+Feature\s+Name:?\s+${feature}
+  ^\s+Description:?\s+${descr} -> Record

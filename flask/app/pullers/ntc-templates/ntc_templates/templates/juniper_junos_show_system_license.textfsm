@@ -1,0 +1,8 @@
+Value feature ([a-zA-Z- ]*)
+Value used (\d+)
+Value installed (\d+)
+Value needed (\d+)
+Value expiry (\w+)
+
+Start
+  ^\s+${feature}${used}\s+${installed}\s+${needed}\s+${expiry} -> Record

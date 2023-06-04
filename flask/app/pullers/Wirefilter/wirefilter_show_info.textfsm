@@ -1,0 +1,12 @@
+Value name (.*)
+Value serial (.*)
+Value pid (.*)
+Value vendor (.*)
+Value version (.*)
+
+Start 
+  ^Product\s+name\s+:\s+${name}
+  ^Serial\s+number\s+:\s+${serial}
+  ^Part\s+number\s+:\s+${pid}
+  ^Manufacturer\s+:\s+${vendor}
+  ^Version\s+:\s+${version}

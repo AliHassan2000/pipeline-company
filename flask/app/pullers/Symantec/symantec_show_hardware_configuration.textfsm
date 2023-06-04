@@ -1,0 +1,8 @@
+Value interface (Interface\s+.*)
+Value vendor (.*)
+Value speed (.*)
+Value port_type ([0-9A-Za-z-]*bit\b)
+
+Start
+  ^\s+nic:${interface},\s+vendor:${vendor},\s+model:[A-Za-z0-9 ]*\s+${port_type}
+  ^\s+link speed:${speed} -> Record

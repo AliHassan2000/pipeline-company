@@ -1,0 +1,16 @@
+Value VIP (\d+.\d+.\d+.\d+)
+Value INTERNAL_IP (\d+.\d+.\d+.\d+)
+Value SPORT (.*)
+Value DPORT (.*)
+Value EXTINTF (.*)
+
+#Separate VIP
+
+Start
+  ^\s+set\s+extip\s+${VIP}
+  ^\s+set\s+mappedip\s+"*${INTERNAL_IP}
+  ^\s+set\s+extintf\s+${EXTINTF}
+  ^\s+set\s+extport\s+${SPORT}
+  ^\s+set\s+mappedport\s+${DPORT} -> Record
+
+

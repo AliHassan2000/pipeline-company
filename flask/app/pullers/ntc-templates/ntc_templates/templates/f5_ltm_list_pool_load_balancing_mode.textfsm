@@ -1,0 +1,7 @@
+Value Pool_NAME (.*)
+Value LB_MODE (.*)
+#Separate VIP
+
+Start
+  ^\s*[l|L]tm\s+[p|P]ool\s+${Pool_NAME}\s+
+  ^\s+[L|l]oad-balancing-mode\s${LB_MODE} -> Record

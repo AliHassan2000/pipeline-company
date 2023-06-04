@@ -1,0 +1,8 @@
+Value VSERVER (.*)
+Value Pool_NAME (.*)
+#Separate VIP
+
+Start
+  ^\s*[l|L]tm\s+[v|V]irtual\s+${VSERVER}\s+
+  ^\s*[P|p]ool\s+${Pool_NAME}
+  ^} -> Record

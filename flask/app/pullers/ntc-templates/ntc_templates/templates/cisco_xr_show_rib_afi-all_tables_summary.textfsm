@@ -1,0 +1,9 @@
+Value unicast_prefixes (\d+)
+Value multicast_prefixes (\d+)
+Value ipv (\w+)
+
+Start
+  ^[a-zA-Z ]*\bcounts in\s+${ipv} 
+  ^\s+Total number of unicast prefixes:\s+${unicast_prefixes}
+  ^\s+Total number of multicast prefixes:\s+${multicast_prefixes} -> Record
+   

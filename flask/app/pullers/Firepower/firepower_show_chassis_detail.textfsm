@@ -1,0 +1,13 @@
+Value name (.*)
+Value pid (.*)
+Value vid (.*)
+Value vendor (.*)
+Value serial (.*)
+
+Start
+  ^\s+Product Name:\s+${name}
+  ^\s+PID:\s+${pid}
+  ^\s+VID:\s+${vid}
+  ^\s+Vendor:\s+${vendor}
+  ^\s+Serial\s+\(SN\):\s+${serial}
+

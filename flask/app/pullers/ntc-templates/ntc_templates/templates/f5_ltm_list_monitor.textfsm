@@ -1,0 +1,10 @@
+Value MONITOR_NAME (.*)
+Value MONITOR_VALUE (.*)
+Value SSL_PROFILE (.*)
+#Separate VIP
+
+Start
+  ^ltm\s+[M|m]onitor\s+\S+\s+${MONITOR_NAME}\s+{
+  ^\s+[D|d]estination\s+\S+[:|.]${MONITOR_VALUE}
+  ^\s+ssl-profile\s+\/Common\/${SSL_PROFILE}
+  ^} -> Record

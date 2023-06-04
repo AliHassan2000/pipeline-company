@@ -1,0 +1,28 @@
+Value Required destination_host (.*)
+Value SYSNAME (.*)
+Value management_ip (.*)
+Value PLATFORM (.*)
+Value REMOTE_PORT (.*)
+Value LOCAL_PORT (.*)
+Value software_version (.*)
+Value INTERFACE_IP (.*)
+Value CAPABILITIES (.*[^\s])
+
+Start
+  ^Device ID:${destination_host}
+  ^System Name: ${SYSNAME}
+  ^Interface address\(es\): -> GetInterfaceIP
+  ^Mgmt address\(es\): -> GetIP
+  ^Platform: ${PLATFORM}, Capabilities: ${CAPABILITIES}\s*$$
+  ^Interface: ${LOCAL_PORT}, Port ID \(outgoing port\): ${REMOTE_PORT}
+  ^Version: -> GetVersion
+  ^----- -> Record
+
+GetIP
+  ^.*IP.+Address: ${INTERFACE_IP} -> Start
+
+GetInterfaceIP
+  ^.*IP.+Address: ${management_ip} -> Start
+
+GetVersion
+  ^${software_version} -> Start

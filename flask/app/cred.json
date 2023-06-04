@@ -1,0 +1,74 @@
+{
+    "IGW": {
+        "user": "srv00047",
+        "pwd":"mATjJ#Lx*!HxSbT4"
+        
+    },
+    "EDN": {
+        "user": "ciscotac",
+        "pwd":"C15c0@mob1ly"
+    },
+    "FW":{
+        "user": "ciscotac",
+        "pwd":"C15c0@mob1ly"
+    },
+    "PRIME_UCS_EDN":{
+        "user": "ciscoadmin",
+        "pwd":"M0b1lyy@3Dn@790"
+    },
+    "SYSTEMS":{
+        "user": "srv00282",
+        "pwd":"99maAF5smUt61398"  
+    },
+    "IPT":{
+        "user": "SWV3",
+        "pwd":"snM9v3m08",
+        "auth-key":"3Nt56m08"
+    },
+    "IPT_ENDPOINT":{
+        "user": "SWVV3",
+        "pwd":"cisco1234",
+        "auth-key":"cisco1234"
+    },
+    "IPT_ENDPOINT_API":{
+        "user": "ApiDeveloper",
+        "pwd":"Api@132"
+    },
+    "IPT_UCS":
+    {
+        "user": "cimc",
+        "pwd": "sEE1msEE"
+    },
+    "SEC":
+    {
+        "user": "srv00280",
+        "pwd": "1b3X#fFw4$40vQN%"        
+    },
+    "WLC":
+    {
+        "user": "ednbo",
+        "pwd": "KsaEDN#$$789$B"
+    },
+    "SFTP":
+    {
+        "ip": "10.66.210.148",
+        "user": "cisco-igw-topo",
+        "pwd": "Her5tb45@54",
+        "path": "/data/inventory/topology/"
+    },
+    "SMTP":
+    {
+        "ip": "84.23.106.12",
+        "port": 25
+    },
+    "LDAP":
+    {
+        "ip": "10.14.10.13",
+        "ip2": "10.64.10.13"
+    },
+    "IT_TEAM":
+    {
+        "user": "itteam",
+        "pwd": "itteam@services"
+    } 
+}

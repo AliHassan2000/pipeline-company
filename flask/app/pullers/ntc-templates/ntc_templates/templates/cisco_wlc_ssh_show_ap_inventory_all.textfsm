@@ -1,0 +1,13 @@
+Value AP_NAME (.*)
+Value NAME (.*)
+Value DESCRIPTION (.*)
+Value PID ([\w\-]+)
+Value VID (\w+)
+Value SN (\w+)
+
+Start
+  ^Inventory\s+for\s+${AP_NAME}
+  ^NAME:\s+"${NAME}"\s+,\s*DESCR:\s+"${DESCRIPTION}"
+  ^PID:\s+${PID},\s*VID:\s+${VID}\s*,\s*SN:\s+${SN} -> Record
+  ^\s*$$
+  

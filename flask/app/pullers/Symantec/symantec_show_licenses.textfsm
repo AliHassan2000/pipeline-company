@@ -1,0 +1,14 @@
+Value serial (.*)
+Value part (.*)
+Value description (.*)
+Value activation_date (.*)
+Value expiry_date (.*)
+
+Start
+  ^Serial\s+[Nn]umber\s*:\s+${serial} 
+  ^Part\s+[Nn]umber\s*:\s+${part}
+  ^Expiration\s+[Tt]ype\s*:\s+${expiry_date}
+  ^Product\s+[Dd]escription\s*:\s+${description}
+  ^Activation\s+[Dd]ate\s*:\s+${activation_date}
+  ^Expiration\s+[Dd]ate\s*:\s+${expiry_date} -> Record
+  

@@ -1,0 +1,10 @@
+Value port_name ([A-Za-z0-9/]*)
+Value vendor (.*)
+Value connector ([A-Za-z]*)
+Value speed ([A-Za-z0-9 /]*)
+
+Start
+  ^IDPROM\s+for\s+transceiver\s+${port_name}
+  ^\s+Vendor\s+Name\s+=\s+${vendor}
+  ^\s+Connector\s+type\s+=\s+${connector}
+  ^\s+Nominal\s+bitrate\s+=\s+\D+${speed}

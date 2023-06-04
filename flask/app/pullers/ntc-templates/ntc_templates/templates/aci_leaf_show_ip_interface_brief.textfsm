@@ -1,0 +1,15 @@
+Value VRF (.*)
+Value INTERFACE_NAME (\S+\d+)
+Value IP_ADDRESS (\S+)
+Value PROTOCOL_STATUS (\S+)
+Value ADMIN_STATUS (\S+)
+
+
+Start
+  ^[iI][pP] [Ii]nterface [sS]tatus [Ff]or VRF "${VRF}".*
+  ^[Ii]nterface\s+[Aa]ddress\s+[Ii]nterface\s+[Ss]tatus -> Cluster
+
+Cluster
+  ^${INTERFACE_NAME}\s+$IP_ADDRESS\s+[Pp]rotocol-${PROTOCOL_STATUS}\/\S+\/admin-${ADMIN_STATUS} -> Continue.Record
+  ^[iI][pP] [Ii]nterface [sS]tatus [Ff]or VRF "${VRF}".* -> Start
+  

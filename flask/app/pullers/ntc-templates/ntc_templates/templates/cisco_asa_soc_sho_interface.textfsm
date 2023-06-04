@@ -1,0 +1,13 @@
+Value INTERFACE_NAME (\S+)
+Value ADMIN_STATUS (up|down)
+Value PROTOCOL (.*)
+Value IP_ADDRESS (\d+.\d+.\d+.\d+)
+Value SUBNET (\d+.\d+.\d+.\d+)
+Value DESCRIPTION (.*)
+
+#Separate VIP
+
+Start
+  ^\s*[I|i]nterface\s*${INTERFACE_NAME}\S*\s*\S+\s*is\s*.*${ADMIN_STATUS},\s*[L|l]ine.*is\s*${PROTOCOL}
+  ^\s*[I|i][p|P]\s*[A|a]ddress\s*${IP_ADDRESS}\s*\D*[S|s]ubnet\s*[M|m]ask\s*${SUBNET}
+  ^\s*[D|d]escription\S*\s*${DESCRIPTION} -> Record

@@ -1,0 +1,13 @@
+Value connector (.*)
+Value media_type (.*)
+Value speed (.*)
+Value vendor (.*)
+Value wavelength (.*)
+
+Start
+  ^\s*?Connector\s+:?\s+[=|:]*\s*${connector}
+  ^\s*Media\s+:?\s+[=|:]*\s*${media_type}
+  ^\s*Speed\s+:?\s+${speed}
+  ^\s*Vendor\s+[n|N]ame\s+:?\s+[=|:]*\s*${vendor}
+  ^\s*Wavelength\s+[=|:]*\s*${wavelength}
+ 

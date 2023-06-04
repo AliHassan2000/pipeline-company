@@ -1,0 +1,8 @@
+Value partition ([a-zA-Z0-9\/]*)
+Value Required size ([0-9A-Z.]*)
+Value used ([0-9A-Z.]*)
+Value percent ([0-9A-Z.%]*)
+Value available ([0-9A-Z.]*)
+
+Start
+  ^${partition}:?\s+${size}\s+${used}\s+${percent}\s+${available} -> Record

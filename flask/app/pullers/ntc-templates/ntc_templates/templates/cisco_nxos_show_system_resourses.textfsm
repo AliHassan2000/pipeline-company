@@ -1,0 +1,11 @@
+Value TOTAL (\d+\S)
+Value USED (\d+\S)
+Value FREE (\d+\S)
+Value one_minute (\d+.\d+)
+Value five_minute (\d+.\d+)
+Value fifteen_minute (\d+.\d+)
+
+Start
+  ^Load\s+average:\s+1\s\S+\s+${one_minute}\W+5\s+\S+\s+${five_minute}\s+15\s+\S+\s+${fifteen_minute}$$
+  ^Memory usage:\s+${TOTAL} total,\s+${USED} used,\s+${FREE} free$$
+  

@@ -1,0 +1,15 @@
+Value media_type (.*)
+Value wavelength ([0-9a-z. ]*)
+Value speed ([a-z0-9A-Z]*)
+Value type ([a-z0-9A-Z-]*)
+Value connector_type (.*)
+Value vendor (.*)
+
+Start
+  ^\s+Media\s+type:?\s+${media_type}
+  ^\s+Wavelength:?\s+${wavelength}\s+nm$$
+  ^\s+Vendor:\s+${vendor}$$
+  ^\s+Speed:?\s+${speed}$$
+  ^\s+Type:?\s+${type}
+  ^\s+Connector\s+Type:?\s+${connector_type}
+  

@@ -1,0 +1,10 @@
+Value name ([a-zA-Z \/]*)
+Value version ([0-9.]*)
+Value expiry_date ([a-zA-Z 0-9.]*)
+Value last_update ([a-zA-Z 0-9.]*)
+
+Start
+  ^${name}$$
+  ^Version:\s+${version}
+  ^Contract Expiry Date:\s+${expiry_date}
+  ^Last Update Attempt:\s+${last_update} -> Record

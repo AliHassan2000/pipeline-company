@@ -1,0 +1,7 @@
+Value VERSION (\S[^\[]+)
+Value hardware ([a-z 0-9A-Z()-._]*)
+
+Start
+  ^Cisco.+Software.+Version\s+${VERSION}
+  ^cisco${hardware}\bprocessor
+  

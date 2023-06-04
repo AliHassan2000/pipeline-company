@@ -1,0 +1,22 @@
+Value VSERVER (.*)
+Value DESCRIPTION (.*)
+#Separate VIP
+
+Start
+  ^\s*[l|L]tm\s+[v|V]irtual\s+${VSERVER}\s+
+  ^\s+[D|d]escription\s+${DESCRIPTION} -> Record
+
+
+
+#
+#
+#Value Required TYPE (\S+\*?\S*)
+#Value Required IP_PREFIX (\S+)
+#Value Optional METRIC (\d+,\d+|[\d]*)
+#Value Optional COST (\d+,\d+|[\d]*)
+#Value Required NEXT_HOP (\S+(?:,\S+)*)
+#Value Optional UPTIME (\S+(?:,\S+)*)
+#Value Required INTERFACE (\S+(?:,\S+)*)
+
+#Start
+#  ^${TYPE}\s+${IP_PREFIX}\s+\[${METRIC}/${COST}\]\s+via\s+${NEXT_HOP}(?:,\s+${UPTIME})?,\s+${INTERFACE}\s*$$ -> Record

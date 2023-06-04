@@ -1,0 +1,29 @@
+Value INTERFACE (^\S+\/.*)
+Value MANUFACTURER (\S+)
+Value TYPE (.+)
+Value SERIAL (\S+)
+Value PART_NUMBER (\S+)
+Value speed ([A-Za-z0-9- \/]*)
+Value revision ([A-Za-z0-9- \/]*)
+
+Start
+  ^${INTERFACE}
+  ^\s+transceiver is not -> Clear
+  ^\s+type\s+is(\s+${TYPE})?
+  ^\s+name\s+is(\s+${MANUFACTURER})?
+  ^\s+part\s+number\s+is(\s+${PART_NUMBER})?
+  ^\s+serial\s+number\s+is(\s+${SERIAL})?
+  ^\s+transceiver\s+
+  ^\s+nominal\s+bitrate\s+is\s+${speed}
+  ^\s+revision\s+is\s+${revision}
+  ^\s+Link\s+
+  ^\s+cisco\s+id 
+  ^\s+cisco\s+extended
+  ^\s+cisco\s+part\s+number
+  ^\s+cisco\s+product\s+id
+  #^\s+cisco\s+vendor\s+id
+  #^Eth -> Record
+  ^(?:\s*$$|\s+cisco\s+vendor\s+id) -> Record
+
+
+#Value INTERFACE (\S+/\S+)

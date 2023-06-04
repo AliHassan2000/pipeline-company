@@ -1,0 +1,39 @@
+Value NAME ([A-Za-z0-9\/]*)
+Value PID ([A-Za-z0-9-]*)
+Value SN (\S+)
+Value DESCR ([A-Za-z ]*)
+Value VID (\d+\.\d+|\d+)
+
+Start
+  ^\s*System\s+\S+?$$ -> Chassis
+
+Chassis
+  ^\s+Model
+  ^\s+-
+  ^\s+HW
+  ^\s+${VID}\s+${SN}\s+\d+-\d+-\d+ -> Record
+  ^\s+${PID}?\s+${DESCR}$$
+  ^\s*System.+(card slots|card-slots) -> Module
+
+Module
+  ^\s+Module
+  ^\s+-
+  ^\s+${NAME}\s+${PID}\s+${VID}\s+${SN} -> Record
+  ^\s*System.+(power supply|power-supply) -> Power_Supply
+
+Power_Supply
+  ^\s+Slot
+  ^\s+-
+  ^\s+${NAME}\s+${PID}\s+${SN} -> Record
+  ^\s*System.+(fan) -> Fan
+
+Fan
+  ^\s+Module
+  ^\s+-
+  ^\s+${NAME}?\s+\d+?\s+${PID}?\s+${SN} -> Record
+  ^\s*System.+(transceiver slots|transceiver-slots) -> Transceiver
+
+Transceiver
+  ^\s+Port
+  ^\s+-
+  ^\s+${NAME}\s+${DESCR}\s+${PID}\s+${SN}\s+${VID} -> Record

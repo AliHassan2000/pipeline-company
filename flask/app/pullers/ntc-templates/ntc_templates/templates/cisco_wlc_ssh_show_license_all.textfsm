@@ -1,0 +1,10 @@
+Value feature (\w+)
+Value state (\w+)
+Value total_period (.*)
+Value period_left (.*)
+
+Start
+  ^\s+Feature\s+name:?\s+${feature}
+  ^\s+License\s+state:?\s+${state}
+  ^\s+Evaluation\s+total\s+period:?\s+${total_period}
+  ^\s+Evaluation\s+period\s+left:?\s+${period_left} -> Record

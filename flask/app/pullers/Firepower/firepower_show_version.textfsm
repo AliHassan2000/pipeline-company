@@ -1,0 +1,6 @@
+Value version (\S+)
+Value build (\S+)
+
+Start
+  ^\s+(Running-Vers|Version):\s+${version}\b\(
+  ^\s+(Package-Vers|Startup-Vers):\s+${build}\b\(

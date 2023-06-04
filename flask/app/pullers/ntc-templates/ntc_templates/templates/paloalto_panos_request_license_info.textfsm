@@ -1,0 +1,12 @@
+Value feature (.*)
+Value desc (.*)
+Value serial (.*)
+Value issue (.*)
+Value expire (.*)
+
+Start
+  ^Feature:\s+${feature}
+  ^Description:\s+${desc}
+  ^Serial:\s+${serial}
+  ^Issued:\s+${issue}
+  ^Expires:\s+${expire} -> Record

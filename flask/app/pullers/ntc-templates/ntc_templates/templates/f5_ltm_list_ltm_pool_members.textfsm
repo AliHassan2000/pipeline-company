@@ -1,0 +1,23 @@
+Value Pool_NAME (.*)
+Value MEMBER_NAME ([a-zA-Z0-9_.-]*(%*\d*):.*)
+Value NODE (\d+.\d+.\d+.\d+)
+Value SESSION (.*)
+Value STATUS (.*)
+#Value MONITOR (.*)
+
+#Separate VIP
+
+Start
+  ^\s*[l|L]tm\s+[p|P]ool\s+${Pool_NAME}\s+
+  ^\s+${MEMBER_NAME}\s -> Member
+  #^\s+monitor\s+${MONITOR}
+  ^} -> Record
+
+Member
+  #^\s+} -> Start
+  ^\s*[l|L]tm\s+[p|P]ool\s+${Pool_NAME}\s+
+  ^\s+${MEMBER_NAME}\s
+  ^\s+[A|a]ddress\s+${NODE}
+  ^\s+[S|s]ession\s+${SESSION}
+  ^\s+[S|s]tate\s+${STATUS} 
+  ^\s+} -> Record

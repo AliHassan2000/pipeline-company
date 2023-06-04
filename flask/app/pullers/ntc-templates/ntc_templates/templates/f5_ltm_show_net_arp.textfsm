@@ -1,0 +1,6 @@
+Value MAC (\S+:\S+:\S+:\S+:\S+:\S+)
+Value ADDRESS (\d+.\d+.\d+.\d+)
+#Separate VIP
+
+Start
+  ^\S+\s+${ADDRESS}%*\d*\s+${MAC} -> Record

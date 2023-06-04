@@ -1,0 +1,85 @@
+version: '2.2'
+
+services:  
+  invdb:
+    image: mysql:latest
+    restart: always
+    container_name: Inventory-Container
+    ports:
+      - '3308:3306'
+    environment:
+      MYSQL_ROOT_PASSWORD: As123456?
+      MYSQL_DATABASE: InventoryDB
+      TZ: Asia/Riyadh
+    volumes:
+      - ./db/inv.sql:/docker-entrypoint-initdb.d/inv.sql
+
+  phymapping:
+    image: mysql:latest
+    restart: always
+    container_name: Physical-Mapping-Container
+    ports:
+      - '3307:3306'
+    environment:
+      MYSQL_ROOT_PASSWORD: As123456?
+      MYSQL_DATABASE: PhyMappingDB
+      TZ: Asia/Riyadh
+    volumes:
+      - ./db/phy_mapping.sql:/docker-entrypoint-initdb.d/phy_mapping.sql
+      
+  flask:
+    container_name: Flask_Container
+    restart: always
+    build: flask
+    ports:
+      - "5000:5000"
+    volumes:
+      - ./flask:/app
+      - ./temp_files:/app/temp
+      - ./logs:/app/logs
+      - ./attachments:/app/attachments
+      
+    environment:
+      - NET_TEXTFSM=/app/app/pullers/ntc-templates/ntc_templates/templates/
+      - TZ=Asia/Riyadh
+      - HOST_IP=${HOST_IP}
+    depends_on:
+      - invdb
+
+  client:
+    container_name: React_Container
+    restart: always
+    build: client
+    command: ["npm", "start"]
+    volumes:
+      - ./client:/frontend
+      - node-modules:/frontend/node_modules
+    environment:
+      - NODE_ENV=development
+      - TZ=Asia/Riyadh
+    ports:
+      - '3000:3000'
+    depends_on:
+      - flask
+
+  # influxdb:
+  #   image: influxdb:latest
+  #   container_name: Operational_Status_Container
+  #   ports:
+  #     - '8086:8086'
+  #   volumes:
+  #     - influxdb-storage:/var/lib/influxdb
+  #   environment:
+  #     DOCKER_INFLUXDB_INIT_MODE: setup
+  #     DOCKER_INFLUXDB_INIT_USERNAME: admin
+  #     DOCKER_INFLUXDB_INIT_PASSWORD: As123456?
+  #     DOCKER_INFLUXDB_INIT_ORG: mobily
+  #     DOCKER_INFLUXDB_INIT_DB: operational_status
+  #     DOCKER_INFLUXDB_INIT_BUCKET: operational_status
+  #     DOCKER_INFLUXDB_INIT_ADMIN_TOKEN: "token"
+  #     TZ: Asia/Riyadh
+
+volumes:
+  node-modules:
+  #influxdb-storage:
+
