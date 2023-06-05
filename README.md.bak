@@ -1,0 +1,9 @@
+<<<<<<< HEAD
+Open PowerShell
+
+Build project using 'docker-compose build'.
+
+Now run the following command i.e 'docker-compose up'.
+=======
+# pipeline-company
+>>>>>>> origin/master
