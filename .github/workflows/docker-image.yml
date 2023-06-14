@@ -1,25 +1,64 @@
-name: Docker Compose Build and Push
+name: My Workflow
 
 on:
   push:
     branches:
-      - master
+      - main
 
 jobs:
-  build-and-push:
+  pipeline:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v2
+      - name: Pipeline
+        run: echo "Pipeline triggered"
 
-      - name: Log in to Docker Hub
-        uses: docker/login-action@v1
-        with:
-          username: ${{ secrets.DOCKERHUB_USERNAME }}
-          password: ${{ secrets.DOCKERHUB_TOKEN }}
+  file_manipulation:
+    runs-on: ubuntu-latest
 
-      - name: Build and push Docker images
+    steps:
+      - name: Deleting docker-compose.yml file
+        run: rm docker-compose.yml
+
+      - name: Renaming docker-compose-prod.yml to docker-compose.yml
+        run: mv docker-compose-prod.yml docker-compose.yml
+
+      - name: Deleting index.jsx file
+        run: rm client/src/utils/axios/index.jsx
+
+      - name: Renaming indexProd.jsx to index.jsx
+        run: mv client/src/utils/axios/indexProd.jsx client/src/utils/axios/index.jsx
+
+      - name: Deleting main.py file
+        run: rm flask/main.py
+
+      - name: Renaming main-P.py to main.py
+        run: mv flask/main-P.py flask/main.py
+
+  connectivity:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Install SSH client
+        run: sudo apt-get update && sudo apt-get install -y openssh-client
+
+      - name: Configure SSH agent and add private key
         run: |
-          docker-compose build
-          docker-compose push
+          eval $(ssh-agent -s)
+          echo "$SSH_PRIVATE_KEY" | ssh-add -
+
+      - name: Disable strict host key checking
+        run: |
+          mkdir -p ~/.ssh
+          echo -e "Host ${{ secrets.VM_IPADDRESS }}\n\tStrictHostKeyChecking no\n" >> ~/.ssh/config
+
+      - name: Check SSH connectivity
+        run: ssh -vvv ${{ secrets.SSH_USER }}@${{ secrets.VM_IPADDRESS }} 22
+
+  deploy:
+    needs: connectivity
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Copy the updated code to the VM
+        run: scp -r ./ ${{ secrets.SSH_USER }}@${{ secrets.VM_IPADDRESS }}:/home/root1
